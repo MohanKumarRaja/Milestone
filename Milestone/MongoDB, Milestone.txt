@@ -1,0 +1,553 @@
+Mongodb
+
+
+
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 657fe8b8c5a6764d6815c4a4
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1
+Using MongoDB:          7.0.4
+Using Mongosh:          2.1.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2023-12-14T11:31:04.660+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use mohan
+switched to db mohan
+mohan> show collections
+
+mohan> db.createCollection("bookstore")
+{ ok: 1 }
+mohan> db.bookstore.insertMany({books_id
+... db.bookstore.insertMany({books_id:2,Btitle:"Book 1",authors:["Authors 1","Authors 2"],price:100})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.bookstore.insertMany({books_id
+> 2 | db.bookstore.insertMany({books_id:2,Btitle:"Book 1",authors:["Authors 1","Authors 2"],price:100})
+    | ^
+  3 |
+
+mohan> db.bookstore.insertMany({books_id:2,Btitle:"Book 1",authors:["Authors 1","Authors 2"],price:100})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+mohan> db.bookstore.insertMany([{books_id:2,Btitle:"Book 1",authors:["Authors 1","Authors 2"],price:100}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657feca0c5a6764d6815c4a5') }
+}
+mohan> db.bookstore.find()
+[
+  {
+    _id: ObjectId('657feca0c5a6764d6815c4a5'),
+    books_id: 2,
+    Btitle: 'Book 1',
+    authors: [ 'Authors 1', 'Authors 2' ],
+    price: 100
+  }
+]
+mohan> db.bookstore.insertMany([{books_id:3,Btitle:"Book 2",authors:["Authors 3","Authors 4"],price:600}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fed28c5a6764d6815c4a6') }
+}
+mohan> db.bookstore.insertMany([{books_id:1,Btitle:"Book 5",authors:["Authors 5","Authors 1"],price:1600}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fed61c5a6764d6815c4a7') }
+}
+mohan> db.bookstore.insertMany([{books_id:7,Btitle:"Book 3",authors:["Authors 8","Authors 6"],price:1300}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fed80c5a6764d6815c4a8') }
+}
+mohan> db.bookstore.insertMany([{books_id:9,Btitle:"Book 13",authors:["Authors 18","Authors 10"],price:2000}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fedadc5a6764d6815c4a9') }
+}
+mohan> db.bookstore.insertMany([{books_id:31,Btitle:"Book 3",authors:["Authors 14","Authors 18"],price:4000}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fedd1c5a6764d6815c4aa') }
+}
+mohan> db.bookstore.insertMany([{books_id:12,Btitle:"Book 8",authors:["Authors 11","Authors 17"],price:8000}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fedfbc5a6764d6815c4ab') }
+}
+mohan> db.bookstore.insertMany([{books_id:52,Btitle:"Book 20",authors:["Authors 11","Authors 7"],price:1000}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657fee22c5a6764d6815c4ac') }
+}
+mohan> db.bookstore.(find)
+Uncaught:
+SyntaxError: Unexpected token (1:13)
+
+> 1 | db.bookstore.(find)
+    |              ^
+  2 |
+
+mohan> db.bookstore.find()
+[
+  {
+    _id: ObjectId('657feca0c5a6764d6815c4a5'),
+    books_id: 2,
+    Btitle: 'Book 1',
+    authors: [ 'Authors 1', 'Authors 2' ],
+    price: 100
+  },
+  {
+    _id: ObjectId('657fed28c5a6764d6815c4a6'),
+    books_id: 3,
+    Btitle: 'Book 2',
+    authors: [ 'Authors 3', 'Authors 4' ],
+    price: 600
+  },
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    books_id: 1,
+    Btitle: 'Book 5',
+    authors: [ 'Authors 5', 'Authors 1' ],
+    price: 1600
+  },
+  {
+    _id: ObjectId('657fed80c5a6764d6815c4a8'),
+    books_id: 7,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 8', 'Authors 6' ],
+    price: 1300
+  },
+  {
+    _id: ObjectId('657fedadc5a6764d6815c4a9'),
+    books_id: 9,
+    Btitle: 'Book 13',
+    authors: [ 'Authors 18', 'Authors 10' ],
+    price: 2000
+  },
+  {
+    _id: ObjectId('657fedd1c5a6764d6815c4aa'),
+    books_id: 31,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 14', 'Authors 18' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('657fedfbc5a6764d6815c4ab'),
+    books_id: 12,
+    Btitle: 'Book 8',
+    authors: [ 'Authors 11', 'Authors 17' ],
+    price: 8000
+mohan> db.bookstore.insertMany([{books_id:152,Btitle:"Book 200",authors:["Authors 51","Authors 27"],price:3300}])
+{ {
+  acknowledged: true,7fee22c5a6764d6815c4ac'),
+  insertedIds: { '0': ObjectId('657feedbc5a6764d6815c4ad') }
+}   Btitle: 'Book 20',
+mohan> db.bookstore.insertMany([{books_id:142,Btitle:"Book 10",authors:["Authors 151","Authors 127"],price:30900}])
+{   price: 1000
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('657feefdc5a6764d6815c4ae') }
+}ohan>
+mohan> db.bookstore.find()
+[
+  {
+    _id: ObjectId('657feca0c5a6764d6815c4a5'),
+    books_id: 2,
+    Btitle: 'Book 1',
+    authors: [ 'Authors 1', 'Authors 2' ],
+    price: 100
+  },
+  {
+    _id: ObjectId('657fed28c5a6764d6815c4a6'),
+    books_id: 3,
+    Btitle: 'Book 2',
+    authors: [ 'Authors 3', 'Authors 4' ],
+    price: 600
+  },
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    books_id: 1,
+    Btitle: 'Book 5',
+    authors: [ 'Authors 5', 'Authors 1' ],
+    price: 1600
+  },
+  {
+    _id: ObjectId('657fed80c5a6764d6815c4a8'),
+    books_id: 7,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 8', 'Authors 6' ],
+    price: 1300
+  },
+  {
+    _id: ObjectId('657fedadc5a6764d6815c4a9'),
+    books_id: 9,
+    Btitle: 'Book 13',
+    authors: [ 'Authors 18', 'Authors 10' ],
+    price: 2000
+  },
+  {
+    _id: ObjectId('657fedd1c5a6764d6815c4aa'),
+    books_id: 31,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 14', 'Authors 18' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('657fedfbc5a6764d6815c4ab'),
+    books_id: 12,
+    Btitle: 'Book 8',
+    authors: [ 'Authors 11', 'Authors 17' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('657fee22c5a6764d6815c4ac'),
+    books_id: 52,
+    Btitle: 'Book 20',
+    authors: [ 'Authors 11', 'Authors 7' ],
+    price: 1000
+  },
+  {
+    _id: ObjectId('657feedbc5a6764d6815c4ad'),
+    books_id: 152,
+    Btitle: 'Book 200',
+    authors: [ 'Authors 51', 'Authors 27' ],
+    price: 3300
+  },
+  {
+    _id: ObjectId('657feefdc5a6764d6815c4ae'),
+    books_id: 142,
+    Btitle: 'Book 10',
+    authors: [ 'Authors 151', 'Authors 127' ],
+    price: 30900
+  }
+]
+mohan> db.bookstore.updateMany({books_id:142},{$set{discount:100}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.bookstore.updateMany({books_id:142},{$set{discount:100}})
+    |                                             ^
+  2 |
+
+mohan> db.bookstore.updateMany({books_id:142},{$set:{discount:100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+mohan> db.bookstore.find({books_id:142})
+[
+  {
+    _id: ObjectId('657feefdc5a6764d6815c4ae'),
+    books_id: 142,
+    Btitle: 'Book 10',
+    authors: [ 'Authors 151', 'Authors 127' ],
+    price: 30900,
+    discount: 100
+  }
+]
+mohan> db.bookstore.find()
+[
+  {
+    _id: ObjectId('657feca0c5a6764d6815c4a5'),
+    books_id: 2,
+    Btitle: 'Book 1',
+    authors: [ 'Authors 1', 'Authors 2' ],
+    price: 100
+  },
+  {
+    _id: ObjectId('657fed28c5a6764d6815c4a6'),
+    books_id: 3,
+    Btitle: 'Book 2',
+    authors: [ 'Authors 3', 'Authors 4' ],
+    price: 600
+  },
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    books_id: 1,
+    Btitle: 'Book 5',
+    authors: [ 'Authors 5', 'Authors 1' ],
+    price: 1600
+  },
+  {
+    _id: ObjectId('657fed80c5a6764d6815c4a8'),
+    books_id: 7,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 8', 'Authors 6' ],
+    price: 1300
+  },
+  {
+    _id: ObjectId('657fedadc5a6764d6815c4a9'),
+    books_id: 9,
+    Btitle: 'Book 13',
+    authors: [ 'Authors 18', 'Authors 10' ],
+    price: 2000
+  },
+  {
+    _id: ObjectId('657fedd1c5a6764d6815c4aa'),
+    books_id: 31,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 14', 'Authors 18' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('657fedfbc5a6764d6815c4ab'),
+    books_id: 12,
+    Btitle: 'Book 8',
+    authors: [ 'Authors 11', 'Authors 17' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('657fee22c5a6764d6815c4ac'),
+    books_id: 52,
+    Btitle: 'Book 20',
+    authors: [ 'Authors 11', 'Authors 7' ],
+    price: 1000
+  },
+  {
+    _id: ObjectId('657feedbc5a6764d6815c4ad'),
+    books_id: 152,
+    Btitle: 'Book 200',
+    authors: [ 'Authors 51', 'Authors 27' ],
+    price: 3300
+  },
+  {
+    _id: ObjectId('657feefdc5a6764d6815c4ae'),
+    books_id: 142,
+    Btitle: 'Book 10',
+    authors: [ 'Authors 151', 'Authors 127' ],
+    price: 30900,
+    discount: 100
+  }
+]
+mohan> db.bookstore.find([use haris;])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:23)
+
+> 1 | db.bookstore.find([use haris;])
+    |                        ^
+  2 |
+
+mohan> db.createCollections("viswa")
+TypeError: db.createCollections is not a function
+mohan> db.viswa.insertMany([{
+...     "name":"Abi",
+...     "id":101,
+...     "price":10000
+... },
+... {
+...     "name":"Abi1",
+...     "id":101,
+...     "price":10000
+... }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('657ff29ec5a6764d6815c4af'),
+    '1': ObjectId('657ff29ec5a6764d6815c4b0')
+  }
+}
+mohan> db.viswa.find()
+[
+  {
+    _id: ObjectId('657ff29ec5a6764d6815c4af'),
+    name: 'Abi',
+    id: 101,
+    price: 10000
+  },
+  {
+    _id: ObjectId('657ff29ec5a6764d6815c4b0'),
+    name: 'Abi1',
+    id: 101,
+    price: 10000
+  }
+]
+mohan> db.bookstore.find({},{authors:["vijay","ajith"]}).limit(3)
+[
+  {
+    _id: ObjectId('657feca0c5a6764d6815c4a5'),
+    authors: [ 'vijay', 'ajith' ]
+  },
+  {
+    _id: ObjectId('657fed28c5a6764d6815c4a6'),
+    authors: [ 'vijay', 'ajith' ]
+  },
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    authors: [ 'vijay', 'ajith' ]
+  }
+]
+mohan> db.bookstore.find({price:{$gt:1500}})
+[
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    books_id: 1,
+    Btitle: 'Book 5',
+    authors: [ 'Authors 5', 'Authors 1' ],
+    price: 1600
+  },
+  {
+    _id: ObjectId('657fedadc5a6764d6815c4a9'),
+    books_id: 9,
+    Btitle: 'Book 13',
+    authors: [ 'Authors 18', 'Authors 10' ],
+    price: 2000
+  },
+  {
+    _id: ObjectId('657fedd1c5a6764d6815c4aa'),
+    books_id: 31,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 14', 'Authors 18' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('657fedfbc5a6764d6815c4ab'),
+    books_id: 12,
+    Btitle: 'Book 8',
+    authors: [ 'Authors 11', 'Authors 17' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('657feedbc5a6764d6815c4ad'),
+    books_id: 152,
+    Btitle: 'Book 200',
+    authors: [ 'Authors 51', 'Authors 27' ],
+    price: 3300
+  },
+  {
+    _id: ObjectId('657feefdc5a6764d6815c4ae'),
+    books_id: 142,
+    Btitle: 'Book 10',
+    authors: [ 'Authors 151', 'Authors 127' ],
+    price: 30900,
+    discount: 100
+  }
+]
+mohan> db.bookstore.find({price:{$gt:800,$it:2000}})
+MongoServerError: unknown operator: $it
+mohan> db.bookstore.find({price:{$gt:800,$t:2000}})
+MongoServerError: unknown operator: $t
+mohan> db.bookstore.find({price:{$gt:800,$lt:2000}})
+[
+  {
+    _id: ObjectId('657fed61c5a6764d6815c4a7'),
+    books_id: 1,
+    Btitle: 'Book 5',
+    authors: [ 'Authors 5', 'Authors 1' ],
+    price: 1600
+  },
+  {
+    _id: ObjectId('657fed80c5a6764d6815c4a8'),
+    books_id: 7,
+    Btitle: 'Book 3',
+    authors: [ 'Authors 8', 'Authors 6' ],
+    price: 1300
+  },
+  {
+    _id: ObjectId('657fee22c5a6764d6815c4ac'),
+    books_id: 52,
+    Btitle: 'Book 20',
+    authors: [ 'Authors 11', 'Authors 7' ],
+    price: 1000
+  }
+]
+mohan> db.bookstore.find({},{btitle:1,_id:0}).store({btitle:1})
+TypeError: db.bookstore.f ... id:0}).store is not a function
+mohan> db.bookstore.find({},{btitle:1,_id:0}).sort({btitle:1})
+[
+  {}, {}, {}, {}, {},
+  {}, {}, {}, {}, {}
+]
+mohan> db.bookstore.find({},{Btitle:1,_id:0}).sort({Btitle:1})
+[
+  { Btitle: 'Book 1' },
+  { Btitle: 'Book 10' },
+  { Btitle: 'Book 13' },
+  { Btitle: 'Book 2' },
+  { Btitle: 'Book 20' },
+  { Btitle: 'Book 200' },
+  { Btitle: 'Book 3' },
+  { Btitle: 'Book 3' },
+  { Btitle: 'Book 5' },
+  { Btitle: 'Book 8' }
+]
+mohan> db.bookstore.find({authors:["vijay,ajith"]})
+
+mohan> db.bookstore.find({authors:["Vijay,Ajith"]})
+
+mohan> db.bookstore.find({authors:["Authors 11","Authors 7"]})
+[
+  {
+    _id: ObjectId('657fee22c5a6764d6815c4ac'),
+    books_id: 52,
+    Btitle: 'Book 20',
+    authors: [ 'Authors 11', 'Authors 7' ],
+    price: 1000
+  }
+]
+mohan> db.bookstore.updateMany({},{$inc:{price:500}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 10,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+mohan> db.bookstore.updateMany({book_id:10},{$set:{book_id:11}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+mohan> db.bookstore.updateMany({book_id:9},{$push:{discpuntprice:100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+mohan> db.bookstore.find({book_id:9})
+
+mohan> db.bookstore.find({book_id:142})
+
+mohan> db.bookstore.updateMany({book_id:9},{$push:{discountprice:100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+mohan> db.bookstore.updateMany({book_id:9},{$push:{authors:10}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+mohan>
+
+
+
+
+
+
+
+
+
+
